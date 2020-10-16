@@ -1,0 +1,100 @@
+[class*="icheck-"] {
+    min-height: 22px;
+    margin-top: 6px !important;
+    margin-bottom: 6px !important;
+    padding-left: 0px;
+}
+
+.icheck-inline {
+    display: inline-block;
+}
+
+.icheck-inline + .icheck-inline {
+    margin-left: .75rem;
+    margin-top: 6px;
+}
+
+[class*="icheck-"] > label {
+    padding-left: 29px !important;
+    min-height: 22px;
+    line-height: 22px;
+    display: inline-block;
+    position: relative;
+    vertical-align: top;
+    margin-bottom: 0;
+    font-weight: normal;
+    cursor: pointer;
+}
+
+[class*="icheck-"] > input:first-child {
+    position: absolute !important;
+    opacity: 0;
+    margin: 0;
+}
+
+[class*="icheck-"] > input:first-child:disabled {
+    cursor: default;
+}
+
+[class*="icheck-"] > input:first-child + label::before,
+[class*="icheck-"] > input:first-child + input[type="hidden"] + label::before {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    border: 1px solid #D3CFC8;
+    border-radius: 0px;
+    margin-left: -29px;
+}
+
+[class*="icheck-"] > input:first-child:checked + label::after,
+[class*="icheck-"] > input:first-child:checked + input[type="hidden"] + label::after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 7px;
+    height: 10px;
+    border: solid 2px #fff;
+    border-left: none;
+    border-top: none;
+    transform: translate(7.75px, 4.5px) rotate(45deg);
+    -ms-transform: translate(7.75px, 4.5px) rotate(45deg);
+}
+
+[class*="icheck-"] > input[type="radio"]:first-child + label::before,
+[class*="icheck-"] > input[type="radio"]:first-child + input[type="hidden"] + label::before {
+    border-radius: 50%;
+}
+
+[class*="icheck-"] > input:first-child:not(:checked):not(:disabled):hover + label::before,
+[class*="icheck-"] > input:first-child:not(:checked):not(:disabled):hover + input[type="hidden"] + label::before {
+    border-width: 2px;
+}
+
+[class*="icheck-"] > input:first-child:disabled + label,
+[class*="icheck-"] > input:first-child:disabled + input[type="hidden"] + label,
+[class*="icheck-"] > input:first-child:disabled + label::before,
+[class*="icheck-"] > input:first-child:disabled + input[type="hidden"] + label::before {
+    pointer-events: none;
+    cursor: default;
+    filter: alpha(opacity=65);
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    opacity: .65;
+}
+
+@each $color, $value in $theme-colors {
+    .icheck-#{$color} > input:first-child:not(:checked):not(:disabled):hover + label::before,
+    .icheck-#{$color} > input:first-child:not(:checked):not(:disabled):hover + input[type="hidden"] + label::before {
+        border-color: $value;
+    }
+
+    .icheck-#{$color} > input:first-child:checked + label::before,
+    .icheck-#{$color} > input:first-child:checked + input[type="hidden"] + label::before {
+        background-color: $value;
+        border-color: $value;
+    }
+}
